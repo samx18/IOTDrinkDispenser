@@ -1,0 +1,49 @@
+author: mongoose-os
+description: A Mongoose OS app skeleton
+version: 1.0
+
+libs_version: ${mos.version}
+modules_version: ${mos.version}
+mongoose_os_version: ${mos.version}
+config_schema:
+- ["device.id", "125"]
+- ["mqtt.client_id", "125"]
+- ["mqtt.ssl_cert", "smartcat-certificate.crt"]
+- ["mqtt.ssl_key", "smartcat.key"]
+- ["wifi.ap.enable", false]
+- ["wifi.sta.enable", true]
+# Change SSID and password for provided network
+- ["wifi.sta.ssid", "Condensate"]
+- ["wifi.sta.pass", "ImagineAllThePeople"]
+- ["mqtt.enable", true]
+- ["mqtt.clean_session", true]
+- ["mqtt.keep_alive", 60]
+#  Change AWS IoT endpoint for account used
+- ["mqtt.server", "a19f7totinkj5w.iot.us-west-2.amazonaws.com:8883"]
+- ["mqtt.ssl_ca_cert", "ca.pem"]
+- ["spi.enable", false]
+- ["spi.mosi_gpio", 16]
+- ["spi.sclk_gpio", 14]
+- ["spi.cs0_gpio", -1]
+
+platform: esp32
+# Optional. List of tags for online search.
+tags:
+  - js
+filesystem:
+  - fs
+libs:
+    # common mgos libs
+  - origin: https://github.com/mongoose-os-libs/ca-bundle
+  - origin: https://github.com/mongoose-os-libs/i2c
+  - origin: https://github.com/mongoose-os-libs/rpc-service-config
+  - origin: https://github.com/mongoose-os-libs/rpc-service-fs
+  - origin: https://github.com/mongoose-os-libs/rpc-uart
+  - origin: https://github.com/mongoose-os-libs/spi
+
+    # libs necessary for the current app
+  - origin: https://github.com/mongoose-os-libs/aws
+  - origin: https://github.com/mongoose-os-libs/mjs
+  - origin: https://github.com/mongoose-os-libs/wifi
+
+manifest_version: 2017-05-18
